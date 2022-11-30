@@ -10,9 +10,9 @@ jobs:
       - name: Stop all containers
         run: docker container stop $(docker container ls -aq)
       - name: Remove all containers
-        run: docker rm $(docker ps -a -q)
+        run: docker rm -f $(docker ps -a -q)
       - name: Remove all images
-        run: docker image rm $(docker image ls -aq)
+        run: docker rmi -f $(docker image ls)
       - name: Build the stack
         run: docker-compose up -d --force-recreate
       - name: Test
